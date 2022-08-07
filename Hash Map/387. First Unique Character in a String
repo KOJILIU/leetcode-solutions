@@ -1,0 +1,7 @@
+import string
+
+
+def firstUniqChar(self, s: str) -> int:
+    idx = [s.index(l) for l in string.ascii_lowercase if s.count(l) == 1]
+    
+    return min(idx) if len(idx) > 0 else -1

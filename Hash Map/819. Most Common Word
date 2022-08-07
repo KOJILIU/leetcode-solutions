@@ -1,0 +1,23 @@
+def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
+    remove = "!?',;."
+    worddict = {}
+    paragraph = list(paragraph)
+    for i in range(len(paragraph)):
+        paragraph[i] = paragraph[i].lower()
+        if paragraph[i] in remove:
+            paragraph[i] = ' '
+    paragraph = ''.join(paragraph)
+    para = paragraph.split()
+    for i in range(len(para)):
+        para[i] = para[i].lower()
+        if para[i] in worddict.keys():
+            worddict[para[i]] += 1
+        else:
+            worddict[para[i]] = 1
+    ans = ''
+    temp = 0
+    for i in worddict.keys():
+        if worddict[i] > temp and i not in banned:
+            ans = i
+            temp = worddict[i]
+    return ans
